@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React, { useState } from "react";
+import "./App.css";
+import blogData from "./blogData.json";
+import BlogPost from "./BlogPost";
 
-function App() {
+const App = () => {
+  const [posts, setPosts] = useState(blogData);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="blog-container">
+      <h1 className="blog-title">CODEXCUE - Simple Blog Display</h1>
+      <div className="post-container">
+        {posts.map((post, index) => (
+          <BlogPost key={index} post={post} />
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
